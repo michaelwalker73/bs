@@ -1,0 +1,10 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Greeting {
+    mapping(address => string) public greetings;
+
+    function setGreeting(string calldata _greet) external {
+        greetings[msg.sender] = _greet;
+    }
+}
