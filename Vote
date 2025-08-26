@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Vote {
+    mapping(address => bool) public voted;
+    uint public yes;
+    uint public no;
+
+    function cast(bool choice) external {
+        require(!voted[msg.sender], "Already voted");
+        voted[msg.sender] = true;
+        if (choice) yes++; else no++;
+    }
+}
