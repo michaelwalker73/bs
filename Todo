@@ -1,0 +1,14 @@
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Todo {
+    struct Task { string text; bool done; }
+    mapping(address => Task[]) public tasks;
+
+    function add(string calldata _text) external {
+        tasks[msg.sender].push(Task(_text, false));
+    }
+    function toggle(uint i) external {
+        tasks[msg.sender][i].done = !tasks[msg.sender][i].done;
+    }
+}
